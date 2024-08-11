@@ -2,7 +2,6 @@
 
 void SpriteAnimation::Init() {
 
-  //texture = LoadTextureFromImage( this->image );
   texture = LoadTextureFromImage( this->image );
 
 }
@@ -13,15 +12,16 @@ void SpriteAnimation::AddAnimation( std::string name, int startFrame, int endFra
 
 }
 
-void SpriteAnimation::PlayAnimation( std::string name ) {
+void SpriteAnimation::SetActiveAnimation( std::string name ) {
 
-  Animation animation = animations[name];
+  this->activeAnimation = name; 
 
+}
 
-  for ( int i = animation.startFrame; i <= animation.endFrame; i++ ) {
+void SpriteAnimation::UpdateAnimaiton() {
 
-    DrawTexturePro(texture, Rectangle{ (float) i * frameSize, (float) i * frameSize, (float) frameSize, (float) frameSize }, Rectangle {position.x, position.y, (float) frameSize, (float) frameSize}, Vector2 {0, 0}, 0.0f, WHITE );
-
-  }
+  Animation animation = animations[ activeAnimation ];
+  
+  if ( currentFrame ) 
 
 }

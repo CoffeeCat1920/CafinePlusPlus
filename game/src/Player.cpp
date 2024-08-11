@@ -3,7 +3,7 @@
 void Player::Init() {
 
   Entity::Init();
-  this->SetAnimation( "walk" , 1, 2);
+  this->SetAnimation( "walk" , 0, 2);
   this->SetActiveAnimation("walk");
 
 }
@@ -15,12 +15,11 @@ void Player::Update() {
   if (IsKeyDown(KEY_S)) this->Move( 0 , 0.1 );
   if (IsKeyDown(KEY_D)) this->Move( 0.1 , 0 );
 
+  this->PlayActiveAnimation();
+
 }
 
 void Player::Draw() {
 
-  this->PlayActiveAnimation();
-
-  //DrawRectangle( Entity::GetPositon().x , Entity::GetPositon().y, 64, 64, RED );
 
 }

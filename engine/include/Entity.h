@@ -2,6 +2,8 @@
 
 #include "./GameObject.h"
 #include "./Animation.h"
+#include "./Collision.h"
+
 #include <string>
 
 class Entity : public GameObject {
@@ -11,12 +13,14 @@ private:
   SpriteAnimation spriteAnimation;
   std::string currentAnimation;
 
+  //CollisionSystem* collsionSystem = CollisionSystem::GetInstance();
+
 public:
 
-  Entity( float positionX, float positionY, std::string filePath, int frameCount) : 
-    GameObject( positionX, positionY), 
-    spriteAnimation( positionX, positionY, filePath, frameCount)
-    {}
+  Entity( float positionX, float positionY, std::string filePath, int frameCount) : GameObject( positionX, positionY), spriteAnimation( filePath, frameCount)
+  {
+    //collsionSystem->AddCollider( &Rectangle{} , std::string name)
+  }
 
   void Init();
 

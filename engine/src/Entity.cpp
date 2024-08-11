@@ -20,7 +20,7 @@ void Entity::SetActiveAnimation( std::string name ) {
 
 void Entity::PlayActiveAnimation() {
 
-  this->spriteAnimation.PlayAnimation( currentAnimation.c_str() );
+  this->spriteAnimation.PlayAnimation( GameObject::GetPositon().x, GameObject::GetPositon().y, currentAnimation.c_str() );
 
 }
 
@@ -31,5 +31,5 @@ void Entity::Move( float directionX, float directionY ) {
 
   GameObject::SetPositon( positionX , positionY );
 
-}
 
+}

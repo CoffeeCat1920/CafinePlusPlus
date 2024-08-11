@@ -5,7 +5,6 @@ class Player : public Entity {
 
 private:
 
-  
 
 public:
 

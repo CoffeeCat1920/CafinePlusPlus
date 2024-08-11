@@ -25,20 +25,24 @@ private:
   int frameCount;
   int frameSize;
 
-  Vector2 position;
-
   std::unordered_map< std::string, Animation > animations;
+
+  std::string activeAnimation;
+
+  Rectangle source;
+  int currentFrame;
 
 public:
 
-  SpriteAnimation( float positionX, float positionY, std::string filepath, int frameCount ) {
+  SpriteAnimation( std::string filepath, int frameCount ) {
     
     this->image = LoadImage( filepath.c_str() );
 
     this->frameCount = frameCount; 
     this->frameSize = image.width / frameCount;
-
-    this->position = Vector2{positionX, positionY};
+    
+    this->source = Rectangle { 0, 0, (float) frameSize, (float) frameSize };
+    this->currentFrame = 0;
 
   } 
 
@@ -50,6 +54,8 @@ public:
   void Init();
 
   void AddAnimation( std::string name, int startFrame, int endFrame );
-  void PlayAnimation( std::string name );
+  void SetActiveAnimation( std::string name );
+  void UpdateAnimaiton();
+  void Display( float positionX, float positionY ); 
 
 };

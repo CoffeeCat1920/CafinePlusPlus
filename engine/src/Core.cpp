@@ -37,7 +37,7 @@ void Engine::Run() {
 
     BeginDrawing();
 
-    ClearBackground(WHITE);
+    ClearBackground( GRAY );
 
     for ( auto& o : gameObjects ) {
 
