@@ -9,7 +9,7 @@ private:
 public:
 
   Player( float positionX, float positionY) : 
-    Entity( positionX, positionY, "./game/resource/player.png", 3 )
+    Entity( "player", positionX, positionY, "./game/resource/player.png", 4 )
   {}
 
   void Init() override;

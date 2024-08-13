@@ -21,8 +21,8 @@ public:
 
   Engine( float screenWidth, float screenHeight ) {
 
+    this->screenWidth = screenWidth;
     this->screenHeight = screenHeight;
-    this->screenWidth = screenHeight;
 
     this->cellSize = 64;
 

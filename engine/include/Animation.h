@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../include/raylib.h"
-#include "GameObject.h"
 
 #include <string>
 #include <unordered_map>
@@ -25,12 +24,13 @@ private:
   int frameCount;
   int frameSize;
 
+  int currentFrame;
+
   std::unordered_map< std::string, Animation > animations;
 
-  std::string activeAnimation;
-
-  Rectangle source;
-  int currentFrame;
+  float framePerSecond;
+  float frameTime;
+  float currentTime;
 
 public:
 
@@ -40,9 +40,10 @@ public:
 
     this->frameCount = frameCount; 
     this->frameSize = image.width / frameCount;
-    
-    this->source = Rectangle { 0, 0, (float) frameSize, (float) frameSize };
-    this->currentFrame = 0;
+
+    this->framePerSecond = 5.0f;
+    this->frameTime = 1 / framePerSecond;
+    this->currentTime = 0.0f;
 
   } 
 
@@ -53,9 +54,9 @@ public:
 
   void Init();
 
+  float GetFrameSize();
+
   void AddAnimation( std::string name, int startFrame, int endFrame );
-  void SetActiveAnimation( std::string name );
-  void UpdateAnimaiton();
-  void Display( float positionX, float positionY ); 
+  void PlayAnimation( float positionX, float positionY, std::string name );
 
 };

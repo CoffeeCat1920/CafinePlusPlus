@@ -3,28 +3,15 @@
 #include "./raylib.h"
 
 #include <string>
+#include <unordered_map>
 #include <vector>
 #include <iostream>
-
-struct Collider {
-
-  Rectangle* rec;
-  std::string name;
-  
-  Collider ( Rectangle* rec, std::string name ) {
-    
-    this->rec = rec;
-    this->name = name;    
-
-  }
-
-};
 
 class CollisionSystem {
 
 private:
-
-  std::vector<Collider> colliders;
+  
+  std::unordered_map< std::string, Rectangle* > colliders; 
   
   // Singleton
   static CollisionSystem* instance;
@@ -53,5 +40,6 @@ public:
   } 
 
   void AddCollider( Rectangle* rec, std::string name );
+  bool CheckCollision( std::string colliderName_1, std::string colliderName_2 ); 
 
 };

@@ -20,7 +20,7 @@ void Entity::SetActiveAnimation( std::string name ) {
 
 void Entity::PlayActiveAnimation() {
 
-  this->spriteAnimation.PlayAnimation( GameObject::GetPositon().x, GameObject::GetPositon().y, currentAnimation.c_str() );
+  this->spriteAnimation.PlayAnimation( GameObject::GetPositon().x, GameObject::GetPositon().y, currentAnimation );
 
 }
 
@@ -29,7 +29,9 @@ void Entity::Move( float directionX, float directionY ) {
   float positionX = GameObject::GetPositon().x + directionX;
   float positionY = GameObject::GetPositon().y + directionY;
 
-  GameObject::SetPositon( positionX , positionY );
+  this->collisionBody.x = positionX;
+  this->collisionBody.y = positionY;
 
+  GameObject::SetPositon( positionX , positionY );
 
 }

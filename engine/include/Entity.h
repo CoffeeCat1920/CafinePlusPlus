@@ -10,16 +10,19 @@ class Entity : public GameObject {
 
 private:
 
+  std::string name;
+
   SpriteAnimation spriteAnimation;
   std::string currentAnimation;
 
-  //CollisionSystem* collsionSystem = CollisionSystem::GetInstance();
-
+  Rectangle collisionBody;
+  
 public:
 
-  Entity( float positionX, float positionY, std::string filePath, int frameCount) : GameObject( positionX, positionY), spriteAnimation( filePath, frameCount)
+  Entity( std::string name, float positionX, float positionY, std::string filePath, int frameCount) : GameObject( positionX, positionY), spriteAnimation( filePath, frameCount)
   {
-    //collsionSystem->AddCollider( &Rectangle{} , std::string name)
+    collisionBody = { positionX, positionY, spriteAnimation.GetFrameSize(), spriteAnimation.GetFrameSize() };
+
   }
 
   void Init();

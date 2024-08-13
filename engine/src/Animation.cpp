@@ -6,22 +6,45 @@ void SpriteAnimation::Init() {
 
 }
 
+float SpriteAnimation::GetFrameSize() {
+
+  return this->frameSize;
+
+}
+
 void SpriteAnimation::AddAnimation( std::string name, int startFrame, int endFrame ) {
 
   this->animations[name] = Animation(startFrame, endFrame);
 
 }
 
-void SpriteAnimation::SetActiveAnimation( std::string name ) {
+void SpriteAnimation::PlayAnimation( float positionX, float positionY, std::string name ) {
 
-  this->activeAnimation = name; 
+  auto it = animations.find( name );
 
-}
+  if ( it == animations.end() ) {
+    
+    std::cerr << "Animation specified are incorrect for " << name << "\n"; 
 
-void SpriteAnimation::UpdateAnimaiton() {
+  }
 
-  Animation animation = animations[ activeAnimation ];
-  
-  if ( currentFrame ) 
+  Animation& animation = it->second;
+
+  currentTime += GetFrameTime();  
+  if ( currentTime >= frameTime ) {
+
+    currentTime -= frameTime;
+    currentFrame++;
+
+    if ( currentFrame > animation.endFrame ) {
+
+      currentFrame = animation.startFrame;
+
+    }
+     
+  } 
+
+  Rectangle source = Rectangle { (float) currentFrame * frameSize, 0, (float) frameSize, (float) frameSize }; 
+  DrawTexturePro( this->texture , source, Rectangle { positionX, positionY, (float) frameSize, (float) frameSize } , Vector2 {0, 0}, 0.0f, WHITE);
 
 }
