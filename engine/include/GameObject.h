@@ -16,6 +16,8 @@ public:
 
   }
 
+  Vector2 GetPositon();
+
   virtual void Init() = 0;
   virtual void Update() = 0;
   virtual void Draw() = 0;
@@ -23,7 +25,6 @@ public:
 
 protected:
 
-  Vector2 GetPositon();
   void SetPositon( float positionX, float positionY );
 
 };
