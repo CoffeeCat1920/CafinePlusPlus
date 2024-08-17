@@ -1,36 +1,39 @@
 #pragma once
 
-#include "./GameObject.h"
-#include "./raylib.h"
-
-class CameraSystem {
-
-private: 
-
-  Camera2D camera = { 0, 0 };
+#include "../include/raylib.h"
+#include "GameObject.h"
+#include <iostream>
+#include <string>
+#include <unordered_map>
   
+class Cams {
+
+private:
+
   Vector2 position;
-  CameraSystem *instance;
+  std::unordered_map<std::string, Vector2> positions;
 
-  GameObject* attached;
+  Camera2D camera;
+  static Cams* instance;
 
-  CameraSystem() {
-    
-    this->attached = nullptr;
-  
-    this->camera = { 0 };
+  Cams() {
     this->camera.target = Vector2 {0, 0};
-    this->camera.offset = (Vector2){ 512/2.0f, 256/2.0f };
-    this->camera.rotation = 0.0f;
+    this->camera.offset = Vector2 { (float)512/2, (float)256/2 };
     this->camera.zoom = 1.0f;
-
+    this->camera.rotation = 0.0f;
   }
 
 public:
 
-  Camera2D GetCamera(); 
-  CameraSystem* GetInstance();
-  void AttachCamera( GameObject *gameObject );
+  static Cams* GetInstance() {
+    if (instance == nullptr) {
+      instance = new Cams();
+    }
+    return instance;
+  }
+  
+  void SetCameraPosition( Vector2 position );
+  Camera2D* GetCamera();
   void Update();
 
 };

@@ -10,8 +10,6 @@ class Entity : public GameObject {
 
 private:
 
-  std::string name;
-
   SpriteAnimation spriteAnimation;
   std::string currentAnimation;
 
@@ -19,8 +17,9 @@ private:
   
 public:
 
-  Entity( std::string name, float positionX, float positionY, std::string filePath, int frameCount) : GameObject( positionX, positionY), spriteAnimation( filePath, frameCount)
+  Entity( std::string name, float positionX, float positionY, std::string filePath, int frameCount) : GameObject( name, positionX, positionY), spriteAnimation( filePath, frameCount)
   {
+
     collisionBody = { positionX, positionY, spriteAnimation.GetFrameSize(), spriteAnimation.GetFrameSize() };
 
   }

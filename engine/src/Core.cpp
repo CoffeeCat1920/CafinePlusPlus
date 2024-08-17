@@ -29,6 +29,8 @@ void Engine::Run() {
 
     for ( auto& o : gameObjects ) {
 
+      cams->Update();
+
       o->Update();
 
       x++;
@@ -36,6 +38,8 @@ void Engine::Run() {
     }
 
     BeginDrawing();
+
+    BeginMode2D( *cams->GetCamera()  );
 
     ClearBackground( GRAY );
 
@@ -45,9 +49,11 @@ void Engine::Run() {
 
     }
 
+    EndMode2D();
 
     EndDrawing();
 
   }
 
 }
+

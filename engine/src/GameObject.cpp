@@ -12,8 +12,8 @@ void GameObject::SetPositon( float positionX, float positionY ) {
 
 }
 
-Vector2* GameObject::GetPositonRef() {
+std::string GameObject::GetName() {
+  
+  return name;
 
-  return &position;
-
-} 
+}

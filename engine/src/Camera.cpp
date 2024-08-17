@@ -1,29 +1,21 @@
 #include "../include/Camera.h"
 
-CameraSystem* CameraSystem::GetInstance() {
+Cams* Cams::instance = nullptr;
 
-  if ( this->instance == nullptr ) {
+Camera2D* Cams::GetCamera() {
 
-    instance = new CameraSystem();
-
-  }
-
-  return instance;
+  return &camera;
 
 }
 
-Camera2D CameraSystem::GetCamera() {
-  return camera;
-}
+void Cams::SetCameraPosition( Vector2 position ) {
 
-void CameraSystem::AttachCamera( GameObject* gameObject ) {
-
-  this->attached = gameObject;
+  this->position = position;
 
 }
 
-void CameraSystem::Update() {
+void Cams::Update() {
 
-  this->camera.target = attached->GetPositon();
+  this->camera.target = position;
 
 }
