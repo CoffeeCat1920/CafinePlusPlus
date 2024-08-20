@@ -25,13 +25,16 @@ public:
   }
 
   void Init();
-
+  
+  // Animations
   void SetAnimation( std::string name, int startFrame, int endFrame );
   void SetActiveAnimation( std::string name );
   void PlayActiveAnimation();
-
+  
+  // Movement
   void Move( float directionX, float directionY );
-
+  
+  // To be made
   virtual void Update()  = 0;
   virtual void Draw() = 0;
 

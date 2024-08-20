@@ -15,7 +15,6 @@ void Player::Update() {
   if (IsKeyDown(KEY_S)) this->Move( 0 , 0.1 );
   if (IsKeyDown(KEY_D)) this->Move( 0.1 , 0 );
 
-  this->cam->SetCameraPosition( GameObject::GetPositon() );
 
 }
 
