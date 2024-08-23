@@ -1,11 +1,13 @@
 #include "./engine/include/Core.h"
+
 #include "./game/include/Player.h"
+#include "./game/include/Settings.h"
 
 int main () {
 
-  Engine engine = Engine( 512, 256 );
-  
-  Player player = Player{ 2 * 64, 2 * 64 };
+  Player player = Player{ BLOCK * 2, BLOCK * 2 };
+
+  Engine engine = Engine( BLOCK * BOARD_X, BLOCK * BOARD_Y, player.GetCamera() );
   
   engine.AddObject(&player);
    

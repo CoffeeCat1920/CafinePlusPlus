@@ -1,5 +1,7 @@
 #include "../include/Core.h"
 #include <vector>
+#include <string>
+#include <iostream>
 
 void Engine::AddObject( GameObject* gameObject ) {
 
@@ -25,7 +27,11 @@ void Engine::Run() {
 
   int x = 0;
 
+  SetTargetFPS( 60 );
+
   while (!WindowShouldClose()) {
+
+    BeginMode2D( *this->camera->GetCamera() );
 
     for ( auto& o : gameObjects ) {
 
@@ -39,11 +45,20 @@ void Engine::Run() {
 
     ClearBackground( GRAY );
 
+
     for ( auto& o : gameObjects ) {
 
       o->Draw();
 
     }
+
+    EndMode2D();
+
+    std::string fps = "FPS: " + std::to_string( GetFPS() );
+    std::string position = "Position: X " + std::to_string( this->camera->GetCamera()->target.x ) + " Y " + std::to_string ( this->camera->GetCamera()->target.y ); 
+
+    DrawText( fps.c_str()  , 0, 0, 32, BLACK);
+    DrawText( position.c_str() , 0, 32, 32, BLACK );
 
     EndDrawing();
 

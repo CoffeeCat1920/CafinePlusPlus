@@ -2,20 +2,18 @@
 
 Camera2D* BetterCamera::GetCamera() {
 
-  this->camera.target = this->position;
-
   return &this->camera;
 
 }
 
 Vector2 BetterCamera::GetPosition() {
 
-  return this->position;
+  return this->camera.target;
 
 } 
 
 void BetterCamera::SetPosition( Vector2 position ) {
 
-  this->position = position;
+  this->camera.target = position;
 
 }
