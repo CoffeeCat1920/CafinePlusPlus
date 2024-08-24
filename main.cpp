@@ -1,15 +1,12 @@
-#include "./engine/include/Core.h"
-
-#include "./game/include/Player.h"
+#include "./engine/include/CaffinePlusPlus.h"
 #include "./game/include/Settings.h"
+#include "engine/include/BetterCamera.h"
 
 int main () {
 
-  Player player = Player{ BLOCK * 2, BLOCK * 2 };
+  BetterCamera* camera = new BetterCamera( "default camera", 0, 0, 0, 0, 0, 1.0);
 
-  Engine engine = Engine( BLOCK * BOARD_X, BLOCK * BOARD_Y, player.GetCamera() );
-  
-  engine.AddObject(&player);
+  Engine engine = Engine( BLOCK * BOARD_X, BLOCK * BOARD_Y, camera );
    
   engine.Run();
 

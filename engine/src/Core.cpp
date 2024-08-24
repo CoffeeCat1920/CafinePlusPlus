@@ -55,10 +55,8 @@ void Engine::Run() {
     EndMode2D();
 
     std::string fps = "FPS: " + std::to_string( GetFPS() );
-    std::string position = "Position: X " + std::to_string( this->camera->GetCamera()->target.x ) + " Y " + std::to_string ( this->camera->GetCamera()->target.y ); 
 
     DrawText( fps.c_str()  , 0, 0, 32, BLACK);
-    DrawText( position.c_str() , 0, 32, 32, BLACK );
 
     EndDrawing();
 
