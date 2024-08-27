@@ -1,7 +1,6 @@
 #include "../include/Core.h"
 #include <vector>
 #include <string>
-#include <iostream>
 
 void Engine::AddObject( GameObject* gameObject ) {
 
@@ -35,7 +34,7 @@ void Engine::Run() {
 
     for ( auto& o : gameObjects ) {
 
-      o->Update();
+      if ( o != nullptr )  o->Update();
 
       x++;
 
@@ -48,15 +47,16 @@ void Engine::Run() {
 
     for ( auto& o : gameObjects ) {
 
-      o->Draw();
+      if ( o != nullptr ) o->Draw();
 
     }
 
-    EndMode2D();
 
     std::string fps = "FPS: " + std::to_string( GetFPS() );
 
-    DrawText( fps.c_str()  , 0, 0, 32, BLACK);
+    DrawText( fps.c_str()  , 0, 64 * 0, 32, BLACK);
+
+    EndMode2D();
 
     EndDrawing();
 
