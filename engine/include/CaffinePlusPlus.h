@@ -1,4 +1,3 @@
-#include "./Animation.h"
 #include "./BetterCamera.h"
 #include "./Core.h"
 #include "./Entity.h"

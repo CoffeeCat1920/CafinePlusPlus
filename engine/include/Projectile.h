@@ -9,7 +9,6 @@ class Bullet : public Entity {
 private:
   
   Vector2 direction;
-  float rotation;
 
   int speed;
   int damege;
@@ -28,5 +27,7 @@ public:
   void Init() override;
   void Update() override;
   void Draw() override;
+
+  void GetBullet( Vector2 direction );
 
 };

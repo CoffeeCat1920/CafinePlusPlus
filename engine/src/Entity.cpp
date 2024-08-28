@@ -24,6 +24,12 @@ void Entity::PlayActiveAnimation() {
 
 }
 
+void Entity::DrawSprite() {
+
+  this->spriteAnimation.DrawSprite( GameObject::GetPositon().x, GameObject::GetPositon().y );
+
+}
+
 void Entity::Move( float directionX, float directionY ) {
 
   float positionX = GameObject::GetPositon().x + directionX;

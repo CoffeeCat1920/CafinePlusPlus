@@ -14,7 +14,7 @@ struct Animation {
   int endFrame;
 };
 
-class SpriteAnimation {
+class Sprite {
 
 private:
   
@@ -34,7 +34,7 @@ private:
 
 public:
 
-  SpriteAnimation( std::string filepath, int frameCount ) {
+  Sprite( std::string filepath, int frameCount ) {
     
     this->image = LoadImage( filepath.c_str() );
 
@@ -47,7 +47,16 @@ public:
 
   } 
 
-  ~SpriteAnimation() {
+  Sprite( std::string filePath ) {
+
+    this->image = LoadImage( filePath.c_str() );
+
+    this->frameCount = 0;
+    this->frameSize = image.width;
+
+  }
+
+  ~Sprite() {
     UnloadImage(image);
     UnloadTexture(texture);
   } 
@@ -58,5 +67,7 @@ public:
 
   void AddAnimation( std::string name, int startFrame, int endFrame );
   void PlayAnimation( float positionX, float positionY, std::string name );
+
+  void DrawSprite( float positionX, float positionY );
 
 };

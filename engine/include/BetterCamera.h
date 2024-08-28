@@ -27,8 +27,6 @@ public:
   Vector2 GetPosition();
   Camera2D* GetCamera();
 
-protected:
-  
   void SetPosition( Vector2 position );
 
 };
