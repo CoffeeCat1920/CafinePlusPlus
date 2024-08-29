@@ -2,8 +2,6 @@
 #include <vector>
 #include <string>
 
-#include <iostream>
-
 void Engine::AddObject( GameObject* gameObject ) {
 
   gameObjects.push_back(gameObject);
@@ -29,8 +27,12 @@ void Engine::Run() {
   int x = 0;
 
   SetTargetFPS( 60 );
-
+  
   while (!WindowShouldClose()) {
+
+    BeginDrawing();
+
+    DrawCircle( this->camera->GetCamera()->target.x , this->camera->GetPosition().y, 64, BLUE );
 
     BeginMode2D( *this->camera->GetCamera() );
 
@@ -42,10 +44,7 @@ void Engine::Run() {
 
     }
 
-    BeginDrawing();
-
     ClearBackground( GRAY );
-
 
     for ( auto& o : gameObjects ) {
 
@@ -53,19 +52,14 @@ void Engine::Run() {
 
     }
 
-    
+    EndMode2D();
+
     // Debug stuff
     //
     std::string fps = "FPS: " + std::to_string( GetFPS() );
     DrawText( fps.c_str()  , 0, 64 * 0, 32, BLACK);
-    //
-    
-    this->camera->SetPosition( Vector2 { this->camera->GetPosition().x + 1, this->camera->GetPosition().y } );
-    std::cout << this->camera->GetPosition().x << std::endl;
 
     EndDrawing();
-
-    EndMode2D();
 
 
   }

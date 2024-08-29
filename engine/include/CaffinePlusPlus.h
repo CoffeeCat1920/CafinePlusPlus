@@ -1,5 +1,4 @@
-#include "./BetterCamera.h"
 #include "./Core.h"
 #include "./Entity.h"
 #include "./GameObject.h"
-#include "./VistaCamera.h"
+#include "./MyCamera.h"

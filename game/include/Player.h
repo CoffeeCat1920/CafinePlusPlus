@@ -8,6 +8,7 @@ class Player : public Entity {
 private:
 
   int speed;
+  MyCamera camera;
 
 public:
 
@@ -22,5 +23,7 @@ public:
   void Init() override;
   void Update() override;
   void Draw() override;
+
+  MyCamera* GetCamera();
 
 };

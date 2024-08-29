@@ -3,11 +3,9 @@
 
 int main () {
 
-  BetterCamera* camera = new BetterCamera( "default camera", 0, 0, 0, 0, 0, 1.0);
-
   Player player = Player( BLOCK * 2, BLOCK * 2 ); 
 
-  Engine engine = Engine( BLOCK * BOARD_X, BLOCK * BOARD_Y, camera );
+  Engine engine = Engine( BLOCK * BOARD_X, BLOCK * BOARD_Y, player.GetCamera() );
 
   engine.AddObject(&player);
    
