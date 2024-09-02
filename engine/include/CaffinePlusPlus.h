@@ -2,3 +2,4 @@
 #include "./Entity.h"
 #include "./GameObject.h"
 #include "./MyCamera.h"
+#include "./StaticObject.h"
